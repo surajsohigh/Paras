@@ -1,0 +1,88 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/empMaster.css' %}">
+    <title>Document</title>
+</head>
+<body>
+  <section>
+    <!--for demo wrap-->
+    <h1>Fixed Table header</h1>
+    <div class="">  <table cellpadding="0" cellspacing="0" border="0">
+      <table >
+
+        <thead>
+          <tr>
+            <th>S No.</th>
+            <th>Date of Complaint</th>
+            <th>Patient Name</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>UHID/IP No.</th>
+            <th>Room/Bed No.</th>
+            <th>Admitted under</th>
+            <th>Complaints in Detail</th>
+            <th>Allorted Department</th>
+            <th>Status</th>
+            <th>Date Resolved</th>
+            <th>REMARKS</th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+    <div class="tbl-content">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tbody>
+            {% for Data in lis %}
+          <tr>
+            <td>{{Data.id}}</td>
+            <td>{{Data.DATE}}</td>
+            <td>{{Data.PATIENT_NAME}}</td>
+            <td>{{Data.AGE}}</td>
+            <td>{{Data.GENDER}}</td>
+            <td>{{Data.UHID_NO}}</td>
+            <td>{{Data.ROOM_NO}}</td>
+            <td>{{Data.ADMITTED_UNDER}}</td>
+            <td>{{Data.COMPLAINTS}}</td>
+            <td>{{Data.DEPARTMENT}}</td>
+
+            {% if Data.STATUS == 'open' %}
+            <td style="color: brown;">{{Data.STATUS}}</td>
+            {% else %}
+            <td>{{Data.STATUS}}</td>
+            {% endif %}
+
+            <td>{{Data.DATE_RESOLVED}}</td>
+            <td>{{Data.REMARKS}}</td>
+            <td>{{Data.COMMENTS}}</td>
+          </tr>
+          {% endfor %}
+          
+<!--           
+          <tr>
+            <td>AAX</td>
+            <td>ADELAIDE</td>
+            <td>$3.22</td>
+            <td>+0.01</td>
+            <td>+1.36%</td>
+          </tr> -->
+            
+        </tbody>
+      </table>
+    </div>
+  </section>
+  
+  
+  <!-- follow me template -->
+  <div class="made-with-love">
+    Made with
+    <i>♥</i> by
+    <!-- <a target="_blank" href="https://codepen.io/nikhil8krishnan">Nikhil Krishnan</a> -->
+  </div>
+</body>
+</html>
+
